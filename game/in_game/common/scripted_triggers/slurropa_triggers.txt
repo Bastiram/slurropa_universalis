@@ -1,0 +1,13 @@
+expel_people_valid_target = {
+    # This block runs in province scope
+    OR = {
+        any_location_in_province = { is_capital = yes }
+
+        AND = {
+            societal_value:centralization_vs_decentralization < 0
+            NOT = { any_location_in_province = { local_control < 0.25 } }
+        }
+
+        NOT = { any_location_in_province = { local_control < 0.5 } }
+    }
+}
