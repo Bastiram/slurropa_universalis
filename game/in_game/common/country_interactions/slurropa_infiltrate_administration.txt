@@ -1,0 +1,44 @@
+slurropa_infiltrate_administration = {
+    type = diplomacy
+    category = CATEGORY_COVERT_ACTIONS
+    
+    diplomatic_cost = slurropa_infiltrate_administration_cost
+
+    block_when_at_war = no
+
+    cooldown = {
+        type = slurropa_infiltrate_administration
+        months = 30
+    }
+    
+    potential = { has_advance = infiltrate_administration_advance }
+
+    allow = { }
+
+    select_trigger = {
+        looking_for_a = country
+        target_flag = recipient
+        name = "infiltrate_administration_SELECT_TITLE"
+        none_available_msg_key = "no_valid_countries"
+
+        column = { data = name }
+        column = { data = population }
+
+        visible = {
+            country_exists = this
+            scope:actor = { has_discovered = prev.capital }
+            scope:recipient = { has_discovered = prev.capital }
+        }
+        
+        enabled = {
+            scope:actor = { has_advance = infiltrate_administration_advance }
+        }
+    }
+
+    effect = {
+        scope:actor = {
+            # Lifts fog of war for 1 year
+            lift_fog_of_war = scope:recipient
+        }
+    }
+}
