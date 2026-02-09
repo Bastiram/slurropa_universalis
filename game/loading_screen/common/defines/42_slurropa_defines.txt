@@ -1,0 +1,4 @@
+NDiplomacy = {
+	TRUCE_YEARS = 6 # doubled time
+	SCALED_TRUCE_YEARS = 10 # doubled time
+}
